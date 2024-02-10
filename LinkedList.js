@@ -16,7 +16,7 @@ function LinkedList() {
         while (temp.nextNode != null) {
           temp = temp.nextNode;
         }
-        temp.nextNode = Node(value);
+        temp.nextNode = Node(key, value);
         tail = temp.nextNode;
         size++;
       }
@@ -77,23 +77,24 @@ function LinkedList() {
       }
     };
   
-    const contains = (value) => {
+    const contains = (key) => {
       if (head == null) return false;
       let temp = head;
       while (temp != null) {
-        if (temp.value == value) return true;
+        if (temp.key == key) return true;
         temp = temp.nextNode;
       }
       return false;
     };
   
-    const find = (value) => {
+    // Returns the index of the node
+    const find = (key) => {
       if (head == null) return null;
       let count = -1;
       let temp = head;
       while (temp != null) {
         count++;
-        if (temp.value == value) return count;
+        if (temp.key == key) return count;
         temp = temp.nextNode;
       }
       return null;
@@ -158,10 +159,12 @@ function LinkedList() {
       if (temp == head) {
         head = head.nextNode;
         size--;
+        return true;
       } else {
         prev.nextNode = temp.nextNode;
         if (temp.nextNode == null) tail = prev;
         size--;
+        return true;
       }
     };
   
