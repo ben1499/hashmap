@@ -33,7 +33,6 @@ function hashMap() {
 
   const regrow = () => {
     const currentEntries = entries();
-    console.log("Regrow called");
     capacity = capacity * 2;
     buckets = Array(capacity).fill(null);
 
